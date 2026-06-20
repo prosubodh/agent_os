@@ -1,0 +1,36 @@
+# .agent-os.yaml
+version: "2.0"
+metadata:
+  project_name: "my-boilerplate-service"
+  token_budget: 1000  # Emits warning if compiled rules exceed this token threshold
+
+# 1. Rules imported from the central Global Rules Registry
+rules:
+  - name: "zero-assumption"
+    from: "github.com/prosubodh/agent-os//rules/zero-assumption.md"
+    ref: "v1.2.0"
+    tokens: 45
+
+  - name: "surgical-diffs"
+    from: "github.com/prosubodh/agent-os//rules/surgical-diffs.md"
+    ref: "v1.2.0"
+    tokens: 38
+
+  - name: "testing"
+    from: "github.com/prosubodh/agent-os//rules/testing.md"
+    ref: "v1.2.0"
+    tokens: 42
+
+# 2. Local, project-specific rules committed directly in this codebase
+local_rules:
+  # - path: ".agent-os/rules/my-custom-rule.md"
+
+# 3. Stack-Agnostic Quality Gates (Pre-commit hooks execution)
+hooks:
+  pre-commit:
+    - name: "Lint Check"
+      run: "echo 'Linting passed!'"
+    - name: "Type Check"
+      run: "echo 'TypeScript checked!'"
+    - name: "Unit Tests"
+      run: "echo 'Unit tests passed!'"
