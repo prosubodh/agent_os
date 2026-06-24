@@ -13,9 +13,3 @@ Do NOT deviate from these active rules under any circumstances.
 - (CRITICAL: Touch and edit ONLY files and lines directly matching requirements. Unrelated adjacent edits are violations.)
 - (BANNED: Running auto-formatters or making stylistic adjustments on adjacent, healthy code.)
 - VALIDATION: Run `git diff` locally to verify changes are 100% minimal and focused before proposing git commits.
-
-## Governance Rule: testing
-# TS Test Mock Safety (Pocock Rules)
-- (BANNED: Type assertions like 'as Type' or 'as any' in test mock data objects.)
-- (MANDATORY: Use '@total-typescript/shoehorn' helper methods (e.g., 'fromPartial()', 'fromAny()') for partial mock data.)
-- COMPILER: This rule triggers JIT expansion ONLY when editing files in test paths.
